@@ -1,0 +1,45 @@
+﻿@model BKStudent.Models.Student
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2 class="text-success" style="font-family : 'Times New Roman'">Bạn có chắc muốn xóa sinh viên</h2>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Faculty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CPA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CPA)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> 
+        <input type="submit" value="Quay lại danh sách" class="btn btn-default" asp-action="Index"/>
+    </form>
+</div>

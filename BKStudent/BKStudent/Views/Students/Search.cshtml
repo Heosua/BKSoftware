@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BKStudent.Models.Student>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+<div class="row" style=" padding-bottom : 25px">
+    <div class="col-md-8 " style="text-align : left">
+        <h2 class="text-success" style="font-family : 'Times New Roman'">Danh sách sinh viên</h2>
+    </div>
+    <div class="col-md-4" style="padding-top : 20px ; text-align : left">
+        <button class="btn btn-default"><a asp-action="Create">Tạo mới sinh viên</a></button>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-12" style="text-align : right">
+        @using (Html.BeginForm("Search", "Students", FormMethod.Get))
+        {
+            <h4 style="font-family:'Times New Roman'">
+                Tìm kiếm sinh viên :  @Html.TextBox("search") <input type="submit" value="Tìm kiếm" />
+            </h4>
+        }
+    </div>
+</div>
+
+<div style="padding-top : 25px">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Faculty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Birthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CPA)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Faculty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CPA)
+                    </td>
+                    <td>
+                        <div class="row" style="text-align: center">
+                            <div class="col-md-4">
+                                <button class="btn"><a asp-action="Edit" asp-route-id="@item.Id">Sửa</a></button>
+
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-link"><a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a></button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-default"><a asp-action="Delete" asp-route-id="@item.Id">Xóa sinh viên</a></button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
